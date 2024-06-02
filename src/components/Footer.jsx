@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../images/logo.png'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 function Footer() {
    
   const authStatus = useSelector((state)=> state.status)
@@ -51,7 +52,7 @@ function Footer() {
                   <h2>Categories</h2>
                   <div className="in-list">
                     {navItems.map((item)=> item.active? (
-                      <li key={item.name} > {item.name} </li>
+                      <li key={item.name} > <Link to={item.slug}> {item.name} </Link></li>
                     ):null )}
                   </div>
                 </div>
