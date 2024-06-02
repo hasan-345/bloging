@@ -17,7 +17,7 @@ function App() {
    authServ.getCurrentAccount().then((response)=> { 
     if(response){
       dispatch(login(response))
-     navigate("/home")
+     navigate("/")
     }else{
       dispatch(logout());
     }
