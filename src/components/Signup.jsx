@@ -29,6 +29,7 @@ function Signup() {
 
     } catch (error) {
         setError(error.message)
+        setLoading("Sign Up")
     }
       
    }
