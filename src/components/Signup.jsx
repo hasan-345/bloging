@@ -24,7 +24,7 @@ function Signup() {
         dispatch(login(userData2))
         navigate("/home")
       }else{
-        navigate("/")
+        setError("Please check your password strength and email")
       }
      
       setLoading("Sign Up")
