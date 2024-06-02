@@ -13,10 +13,12 @@ export class AuthServices {
         const userData = await this.account.create(ID.unique(),email,password,name)
         if(userData){
         return this.login({email,password}) ;
+    }else{
+        return userData
     }
     } catch (error) {
         
-        return error.message;
+        throw error
     }
     
    }
@@ -27,8 +29,7 @@ export class AuthServices {
     return await this.account.createEmailPasswordSession(email,password)
         
     } catch (error) {
-        console.log("No login",error.message)
-        return false
+       throw error
     }
    }
    
