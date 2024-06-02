@@ -316,6 +316,9 @@
 .in-list,.in-list-2{
   padding: 10px 20px;
 }
+.flex{
+  justify-content: center;
+}
 }
 .anchor{
   text-decoration: none;
@@ -403,7 +406,7 @@
 .flex{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .intro{
   font-family: "Roboto", sans-serif;
