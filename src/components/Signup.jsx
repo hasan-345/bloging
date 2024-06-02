@@ -23,10 +23,7 @@ function Signup() {
         const userData2 = await authServ.getCurrentAccount()
         dispatch(login(userData2))
         navigate("/home")
-      }else{
-        setError("Please check your password strength and email")
       }
-     
       setLoading("Sign Up")
 
     } catch (error) {
