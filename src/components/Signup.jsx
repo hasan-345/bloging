@@ -20,6 +20,7 @@ function Signup() {
     try {
         const userData = await authServ.createAccount({...data})
       if(userData){
+        console.log(userData)
         const userData2 = await authServ.getCurrentAccount()
         dispatch(login(userData2))
         navigate("/home")
