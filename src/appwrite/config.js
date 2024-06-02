@@ -28,8 +28,7 @@ export class Service {
             }
         )
      } catch (error) {
-        console.log("createPost error")
-        return error.message
+        throw error
      }
   }
 

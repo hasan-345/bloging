@@ -7,9 +7,8 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 function PostForm({post}) {
-
+    const [error,setError] = useState("")
     const navigate = useNavigate()
-
     const [loading,setLoading] = useState();
   useEffect(()=>{
    if(post){
@@ -57,15 +56,21 @@ function PostForm({post}) {
         if(file){
           const fileId = file.$id
            data.featuredImage = fileId
-            const dbPost = await services.createPost({...data,
-                  userId: userData.$id,
-                  name: userData.name
-            })
-             console.log(dbPost);
-            if(dbPost){
-                navigate(`/post/${dbPost.$id}/${userData.name}`)
-            }
+            
+            try {
+              const dbPost = await services.createPost({...data,
+                userId: userData.$id,
+                name: userData.name
+          })
+          if(dbPost){
             setLoading("Create")
+            navigate(`/post/${dbPost.$id}/${userData.name}`)
+        }
+
+            } catch (error) {
+              setLoading("Create")
+              setError("Don't use any image in Text Editor")
+            }       
         }
   }
   }
@@ -98,12 +103,14 @@ function PostForm({post}) {
             <div className="oneside">
                <div className='out out-input'> <Input {...register("title",{required:true})} type="text" placeholder="Enter title" className="input" /></div>
                <div className='out out-input'> <Input {...register("slug",{required:true})} onInput={(e)=> setValue("slug",slugTranform(e.currentTarget.value)) } type="text" readOnly placeholder="Slug" className="input" /></div>
+             <p>Note! just text will be accepted</p>
                <RTE name="content" control={control} defaultValue={getValues("content")} />
             </div>
             <div className="oneside">
                 <div className="out"><Input type="file" {...register("image",{required:true})} accept="image/png, image/jpg, image/jpeg, image/gif" className="input" /></div>
               <div className="select">  <Select options = {["active","inactive"]} {...register("status",{required:true})}  className="select-input" /></div>
                 <div className="out-btn"> <Button type='submit' className='btn btn-post'  >  {loading} </Button> </div>
+           <div> {error} </div>
             </div>
           </form>
     </div>
