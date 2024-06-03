@@ -36,7 +36,7 @@ function Dashboard() {
 
       <div className='container'>
         <div className="all-posts">
-      {posts && <div className='intro'> <h1>Hey! {userData.name}</h1>  </div>}
+      {posts && <div className='intro'> <h1>Hey! {userData.name}</h1> <Link to="/add-post">  <div className="out-btn"> <Button className='btn'> Create post</Button> </div></Link> </div>}
     {posts &&   posts !== null? ( <div className='flex'>
          {posts.map((post)=> (
             <PostCard key={post.$id} {...post} />

@@ -413,6 +413,11 @@
   display: flex;
   padding: 20px 25px;
 }
+.intro{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .intro h1{
   font-family: "Roboto Condensed", sans-serif;
   font-size: 45px;
@@ -454,7 +459,7 @@
   gap: 10px;
   flex-wrap: wrap;
 }
-.btns .out-btn:nth-child(1) .btn, .post-btn .btn ,.outer-icon .btn{
+.btns .out-btn:nth-child(1) .btn, .post-btn .btn ,.outer-icon .btn,.intro .btn{
   background-color: #004AAD !important;
   color: white;
   padding: 10px 20px;
