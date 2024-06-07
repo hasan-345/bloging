@@ -13,6 +13,7 @@ function InActive() {
             }
         })
     })
+    
    if(post?.length === 0){
     return (
       <div className="outer-icon"> <div>  

@@ -9,14 +9,8 @@ import { useParams } from 'react-router-dom'
 function PostForm({post}) {
     const [error,setError] = useState("")
     const navigate = useNavigate()
-    const [loading,setLoading] = useState();
-  useEffect(()=>{
-   if(post){
-    setLoading("Update")
-   }else{
-    setLoading("Create")
-   }
-  },[])
+    const [loading,setLoading] = useState(post? "Update": "Create");
+
     const {register,handleSubmit,control,watch,setValue,getValues} = useForm({
         defaultValues : {
             title: post?.title || "",
@@ -26,13 +20,18 @@ function PostForm({post}) {
         }
     })
   const userData = useSelector((state)=> state.userData)
-  if(post){
-    setValue("slug",post.$id)
-    setValue("title",post.title)
-  setValue("status",post.status)
-    setValue("content", post.content)
+  const check = ()=> {
+    if(post){
+      setValue("slug",post.$id)
+      setValue("title",post.title)
+    setValue("status",post.status)
+      setValue("content", post.content)
+     setLoading("Update") 
+    }
   }
-
+  useEffect(()=>{
+    check();
+  },[post])
   const submit = async (data)=>{
     setLoading(<i class='bx bx-loader-circle bx-spin bx-rotate-90 icon' ></i>)
        if(post){

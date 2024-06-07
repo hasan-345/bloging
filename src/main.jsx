@@ -14,7 +14,7 @@ import Post from './components/Post.jsx'
 import Dashboard from "./components/pages/Dashboard.jsx"
 import Home from "./components/pages/Home.jsx"
 import InActive from './components/pages/InActive.jsx'
-const router = createBrowserRouter(
+const router = createBrowserRouter( 
   createRoutesFromElements(
     <Route path='/'element={<App/>} >
         <Route path='/' element={<Home/>} />
